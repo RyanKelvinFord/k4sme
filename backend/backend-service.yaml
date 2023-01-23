@@ -8,7 +8,6 @@ metadata:
   labels:
     io.kompose.service: backend
   name: backend
-  namespace: digital-datasheet
 spec:
   ports:
   - name: "5000"

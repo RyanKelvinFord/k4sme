@@ -3,7 +3,6 @@ kind: NetworkPolicy
 metadata:
   creationTimestamp: null
   name: internal-network
-  namespace: digital-datasheet
 spec:
   ingress:
   - from:
