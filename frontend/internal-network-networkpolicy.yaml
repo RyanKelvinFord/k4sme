@@ -1,4 +1,4 @@
-apiVersion: netorking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   creationTimestamp: null
