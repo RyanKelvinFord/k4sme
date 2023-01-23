@@ -1,8 +1,9 @@
-apiVersion: extensions/v1beta1
+apiVersion: netorking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   creationTimestamp: null
   name: internal-network
+  namespace: digital-datasheet
 spec:
   ingress:
   - from:
