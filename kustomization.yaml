@@ -3,5 +3,8 @@ kind: Kustomization
 
 resources:
   - frontend/
+    frontend/frontend-service.yaml
+    frontend/frontend-deployment.yaml
+    frontend/internal-network-networkpolicy.yaml
   - backend/
   - database/
