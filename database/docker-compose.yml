@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+
+  database:
+    container_name: kitt4sme-digital-datasheets-database
+    image: mariadb/server:10.5
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=db_KITT
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_HOST=kitt4sme-digital-datasheets-database
+      - MYSQL_PORT=3306
+    ports:
+      - "3307:3306"
+    #volumes:
+      #- ./init:/docker-entrypoint-initdb.d
+    networks:
+      - internal-network  
+
+networks:
+    internal-network:
+      driver: bridge

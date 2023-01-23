@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: digital-datasheets
+  name: digital-datasheets
+spec:
+  ports:
+  - name: http
+    port: 3001
+    protocol: TCP
+    targetPort: 3001
+  selector:
+    app: digital-datasheets
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: digital-datasheets
+  name: digital-datasheets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: digital-datasheets
+  template:
+    metadata:
+      labels:
+        app: digital-datasheets
+    spec:
+      containers:
+        - image: ryankford/digital-datasheets:1.0-frontend
+          imagePullPolicy: IfNotPresent
+          name: datasheets-frontend
+          ports:
+          - containerPort: 3001
+            name: http
+        - image: ryankford/digital-datasheets:1.0-backend 
+          imagePullPolicy: IfNotPresent
+          name: datasheets-backend
+          ports:
+          - containerPort:5000
+            name: http
+          env:
+          - name: "MYSQL_DATABASE"
+            value: "db_KITT"
+          - name: "MYSQL_USER"
+            value: "user"
+          - name: "MYSQL_PASSWORD"
+            value: "password"
+          - name: "MYSQL_ROOT_PASSWORD"
+            value: "password"
+          - name: "MYSQL_HOST"
+            value: "kitt4sme-digital-datasheets-database"
+          - name: "MYSQL_PORT"
+            value: "3306"
+        - image: ryankford/digital-datasheets:1.0-backend
+          imagePullPolicy: IfNotPresent
+          name: datasheets-frontend
+          ports:
+          - containerPort: 3306
+            name: tcp
+          env:
+          - name: "MYSQL_DATABASE"
+            value: "db_KITT"
+          - name: "MYSQL_USER"
+            value: "user"
+          - name: "MYSQL_PASSWORD"
+            value: "password"
+          - name: "MYSQL_ROOT_PASSWORD"
+            value: "password"
+          - name: "MYSQL_HOST"
+            value: "kitt4sme-digital-datasheets-database"
+          - name: "MYSQL_PORT"
+            value: "3306"

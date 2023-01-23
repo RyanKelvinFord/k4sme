@@ -1,0 +1,9 @@
+flask
+flask_restful
+flask_cors
+SQLAlchemy
+SQLAlchemy-serializer
+flask-marshmallow
+mariadb==1.0.9
+python-dotenv
+gunicorn
