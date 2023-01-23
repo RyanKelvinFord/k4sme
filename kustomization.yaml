@@ -7,7 +7,7 @@ resources:
 - frontend/internal-network-networkpolicy.yaml
 - backend/backend-deployment.yaml 
 - backend/backend-service.yaml 
-- backend/internal-network-networkpolicy.yaml
+#- backend/internal-network-networkpolicy.yaml
 - database/database-deployment.yaml 
 - database/database-service.yaml 
-- database/internal-network-networkpolicy.yaml
+#- database/internal-network-networkpolicy.yaml
