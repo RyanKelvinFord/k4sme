@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: backend
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: backend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/internal-network: "true"
+        io.kompose.service: backend
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: db_KITT
+        - name: MYSQL_HOST
+          value: kitt4sme-digital-datasheets-database
+        - name: MYSQL_PASSWORD
+          value: password
+        - name: MYSQL_PORT
+          value: "3306"
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        - name: MYSQL_USER
+          value: user
+        image: ryankford/digital-datasheets:1.0-backend
+        imagePullPolicy: ""
+        name: kitt4sme-digital-datasheets-backend
+        ports:
+        - containerPort: 5000
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
