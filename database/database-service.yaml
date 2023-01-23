@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: database
   name: database
+  namespace: digital-datasheet
 spec:
   ports:
   - name: "3307"
