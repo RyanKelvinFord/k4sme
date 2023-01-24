@@ -8,7 +8,7 @@ metadata:
   labels:
     io.kompose.service: frontend
   name: frontend
-  namespace: digital-datasheet
+  namespace: default
 spec:
   ports:
   - name: "3000"
