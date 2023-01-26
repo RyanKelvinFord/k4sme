@@ -26,13 +26,4 @@ spec:
         io.kompose.service: frontend
     spec:
       containers:
-      - image: ryankford/digital-datasheets:1.0-frontend
-        imagePullPolicy: ""
-        name: kitt4sme-digital-datasheets-frontend
-        ports:
-        - containerPort: 3000
-        resources: {}
-      restartPolicy: Always
-      serviceAccountName: ""
-      volumes: null
-status: {}
+      - image: ryankford/
